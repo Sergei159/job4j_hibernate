@@ -8,6 +8,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.job4j.model.AutoBrand;
 import ru.job4j.model.AutoModel;
 
+import java.util.List;
+
 public class HbmRun {
 
     public static void main(String[] args) {
@@ -18,25 +20,23 @@ public class HbmRun {
             Session session = sf.openSession();
             session.beginTransaction();
 
-            AutoModel model = AutoModel.of("Rav-4");
-            session.save(model);
-            AutoModel model1 = AutoModel.of("Harrier");
-            session.save(model1);
-            AutoModel model2 = AutoModel.of("Hilux");
-            session.save(model2);
-            AutoModel model3 = AutoModel.of("HighLander");
-            session.save(model3);
-            AutoModel model4 = AutoModel.of("Camry");
-            session.save(model4);
-
-
-
+            List<AutoModel> models = List.of(
+                    AutoModel.of("Rav-4"),
+                    AutoModel.of("Harrier"),
+                    AutoModel.of("Hilux"),
+                    AutoModel.of("HighLander"),
+                    AutoModel.of("Camry")
+            );
+            for (AutoModel model : models) {
+                session.save(model);
+            }
             AutoBrand toyota = AutoBrand.of("Toyota");
-            toyota.addModel(session.load(AutoModel.class, 1));
-//            for (int i = 1; i <= models.size(); i++) {
-//                toyota.addModel(session.load(AutoModel.class, i));
-//            }
+
+            for (int i = 1; i < models.size(); i++) {
+                toyota.addModel(session.load(AutoModel.class, i));
+            }
             session.save(toyota);
+
             session.getTransaction().commit();
             session.close();
         }  catch (Exception e) {
