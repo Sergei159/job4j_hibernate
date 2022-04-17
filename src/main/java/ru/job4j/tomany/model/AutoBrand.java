@@ -14,7 +14,7 @@ public class AutoBrand {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand")
     private List<AutoModel> models = new ArrayList<>();
 
     public AutoBrand() {
@@ -70,5 +70,13 @@ public class AutoBrand {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, models);
+    }
+
+    @Override
+    public String toString() {
+        return "AutoBrand{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + '}';
     }
 }

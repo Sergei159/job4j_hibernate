@@ -12,12 +12,17 @@ public class AutoModel {
 
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "brands_id")
+    private AutoBrand brand;
+
     public AutoModel() {
     }
 
-    public static AutoModel of(String name) {
+    public static AutoModel of(String name, AutoBrand brand) {
         AutoModel model = new AutoModel();
         model.name = name;
+        model.brand = brand;
         return model;
     }
 
@@ -37,6 +42,14 @@ public class AutoModel {
         this.name = name;
     }
 
+    public AutoBrand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(AutoBrand brand) {
+        this.brand = brand;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -53,4 +66,16 @@ public class AutoModel {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
+
+    @Override
+    public String toString() {
+        return "AutoModel{"
+                + "id=" + id
+                + ", name='" + name
+                + ", brand='" + brand + '\''
+                + '}';
+    }
+
+
 }
