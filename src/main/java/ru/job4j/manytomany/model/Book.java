@@ -1,24 +1,22 @@
-package ru.job4j.model;
+package ru.job4j.manytomany.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name  = "models")
-public class AutoModel {
+@Table(name = "books")
+public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
 
-    public AutoModel() {
-    }
-
-    public static AutoModel of(String name) {
-        AutoModel model = new AutoModel();
-        model.name = name;
-        return model;
+    public static Book of(String name) {
+        Book book = new Book();
+        book.name = name;
+        return book;
     }
 
     public int getId() {
@@ -45,8 +43,8 @@ public class AutoModel {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        AutoModel model = (AutoModel) o;
-        return id == model.id && Objects.equals(name, model.name);
+        Book book = (Book) o;
+        return id == book.id && Objects.equals(name, book.name);
     }
 
     @Override

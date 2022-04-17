@@ -1,12 +1,12 @@
-package ru.job4j;
+package ru.job4j.tomany;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.job4j.model.AutoBrand;
-import ru.job4j.model.AutoModel;
+import ru.job4j.tomany.model.AutoBrand;
+import ru.job4j.tomany.model.AutoModel;
 
 import java.util.List;
 

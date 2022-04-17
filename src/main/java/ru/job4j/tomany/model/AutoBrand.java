@@ -1,4 +1,4 @@
-package ru.job4j.model;
+package ru.job4j.tomany.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
