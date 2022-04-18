@@ -13,6 +13,9 @@ public class Candidate {
     private double experience;
     private int salary;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private VacancyDB vacancyDB;
+
     public Candidate() {
     }
 
@@ -81,5 +84,13 @@ public class Candidate {
                 + ", experience=" + experience
                 + ", salary=" + salary
                 + '}';
+    }
+
+    public VacancyDB getVacancyDB() {
+        return vacancyDB;
+    }
+
+    public void setVacancyDB(VacancyDB vacancyDB) {
+        this.vacancyDB = vacancyDB;
     }
 }
